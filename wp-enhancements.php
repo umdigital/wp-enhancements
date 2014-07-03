@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Enhancements
-Description: WP Menu & BU-Navigation support for child CPT's
+Description: A plugin that provides enhancements to Wordpress by adding or fixing functionality.
 Version: 0.1
 Author: Patrick Springstubbe
 Author URI: http://springstubbe.us

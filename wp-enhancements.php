@@ -9,7 +9,7 @@ Author URI: http://springstubbe.us
 
 
 // ADD ANCESTOR/CURRENT NAV CLASSES FOR CPT PARENTS
-function ummcmods_nav_menu_css_class( $classes, $item )
+function wpenhancements_nav_menu_css_class( $classes, $item )
 {
     global $post;
 
@@ -61,22 +61,22 @@ function ummcmods_nav_menu_css_class( $classes, $item )
 
     return $classes;
 }
-add_filter( 'nav_menu_css_class', 'ummcmods_nav_menu_css_class', 10, 2 );
-add_filter( 'bu_navigation_filter_item_attrs', 'ummcmods_nav_menu_css_class', 10, 2 );
+add_filter( 'nav_menu_css_class', 'wpenhancements_nav_menu_css_class', 10, 2 );
+add_filter( 'bu_navigation_filter_item_attrs', 'wpenhancements_nav_menu_css_class', 10, 2 );
 
 // ADD CURRENT PAGE POST TYPE TO BU-NAV supported post types
-function president_bu_navigation_post_types( $post_types )
+function wpenhancements_bu_navigation_post_types( $post_types )
 {
     global $post;
     $post_types['post'] = $post->post_type;
 
     return $post_types;
 }
-add_filter( 'bu_navigation_post_types', 'president_bu_navigation_post_types' );
+add_filter( 'bu_navigation_post_types', 'wpenhancements_bu_navigation_post_types' );
 
 
 // BU-NAVIGATION CHILD CPT OVERRIDES
-function president_widget_bu_pages_args( $list_args )
+function wpenhancements_widget_bu_pages_args( $list_args )
 {
     global $post;
 
@@ -107,4 +107,20 @@ function president_widget_bu_pages_args( $list_args )
 
     return $list_args;
 }
-add_filter( 'widget_bu_pages_args', 'president_widget_bu_pages_args', 9999 );
+add_filter( 'widget_bu_pages_args', 'wpenhancements_widget_bu_pages_args', 9999 );
+
+
+/* WPMU Domain Mapping Tweaks */
+function wpenhancements_wp_nav_menu( $nav_menu, $args )
+{
+    if( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
+        $nav_menu = str_replace( 
+            get_original_url( 'siteurl' ),
+            get_option( 'siteurl' ), 
+            $nav_menu
+        );
+    }
+
+    return $nav_menu;
+}
+add_filter( 'wp_nav_menu', 'wpenhancements_wp_nav_menu', 10, 2 );

@@ -70,9 +70,16 @@ function wpenhancements_nav_menu_css_class( $classes, $item )
 
         // add current class
         if( is_home() ) {
-            array_push( $classes, 'menu-item-home' );
-            array_push( $classes, 'current_page_item' );
-            array_push( $classes, 'current-page-item' );
+            $tClasses = array(
+                'current-menu-item',
+                'current_page_item',
+                'current-page-item'
+            );
+            foreach( $tClasses as $tClass ) {
+                if( !in_array( $tClass, $classes ) ) {
+                    array_push( $classes, $tClass );
+                }
+            }
         }
     }
 

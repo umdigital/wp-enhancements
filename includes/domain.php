@@ -19,12 +19,20 @@ class WPEnchancements_Domain
     static public function string_url_fix( $string )
     {
         if( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
+            // normalize domain
             $string = str_replace(
                 preg_replace( '#^https?://#i', '', get_original_url( 'siteurl' ) ),
                 preg_replace( '#^https?://#i', '', get_option( 'siteurl' ) ),
                 $string
             );
         }
+
+        // normalize protocol for current request and domain
+        $string = str_replace(
+            'http'. (isset( $_SERVER['HTTPS'] ) ? null : 's') .'://'. preg_replace( '#^https?://#i', '', get_option( 'siteurl' ) ),
+            'http'. (isset( $_SERVER['HTTPS'] ) ? 's' : null) .'://'. preg_replace( '#^https?://#i', '', get_option( 'siteurl' ) ),
+            $string
+        );
 
         return $string;
     }

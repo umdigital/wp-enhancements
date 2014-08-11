@@ -11,6 +11,8 @@ class WPEnchancements_Domain
         add_filter( 'theme_mod_header_image', 'WPEnchancements_Domain::string_url_fix' );
         add_filter( 'the_content', 'WPEnchancements_Domain::string_url_fix' );
 
+        add_filter( 'post_link', 'WPEnchancements_Domain::string_url_fix', 99 );
+
         // admin bar url fixing
         add_action( 'wp_before_admin_bar_render', 'WPEnchancements_Domain::admin_bar_render_start' );
         add_action( 'wp_after_admin_bar_render', 'WPEnchancements_Domain::admin_bar_render_end' );

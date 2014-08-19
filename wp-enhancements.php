@@ -28,13 +28,13 @@ function wpenhancements_github_updater_init()
             // this is the name of the folder your plugin lives in
             'proper_folder_name' => dirname( plugin_basename( __FILE__ ) ),
             // the github API url of your github repo
-            'api_url' => 'https://api.github.com/repos/nobleclem/WP-Enhancements',
+            'api_url' => 'https://api.github.com/repos/umichcreative/WP-Enhancements',
             // the github raw url of your github repo
-            'raw_url' => 'https://raw.githubusercontent.com/nobleclem/WP-Enhancements/master',
+            'raw_url' => 'https://raw.githubusercontent.com/umichcreative/WP-Enhancements/master',
             // the github url of your github repo
-            'github_url' => 'https://github.com/nobleclem/WP-Enhancements',
+            'github_url' => 'https://github.com/umichcreative/WP-Enhancements',
              // the zip url of the github repo
-            'zip_url' => 'https://github.com/nobleclem/WP-Enhancements/zipball/master',
+            'zip_url' => 'https://github.com/umichcreative/WP-Enhancements/zipball/master',
             // wether WP should check the validity of the SSL cert when getting an update, see https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/2 and https://github.com/jkudish/WordPress-GitHub-Plugin-Updater/issues/4 for details
             'sslverify' => true,
             // which version of WordPress does your plugin require?

@@ -1,11 +1,12 @@
 <?php
-/*
-Plugin Name: WP Enhancements
-Description: A plugin that provides enhancements to Wordpress by adding or fixing functionality.
-Version: 1.0
-Author: Patrick Springstubbe
-Author URI: http://springstubbe.us
-*/
+/**
+ * Plugin Name: WP Enhancements
+ * Plugin URI: https://github.com/umichcreative/WP-Enhancements/
+ * Description: A plugin that provides enhancements to Wordpress by adding or fixing functionality.
+ * Version: 1.0
+ * Author: U-M: Michigan Creative
+ * Author URI: http://creative.umich.edu
+ */
 
 define( 'WPENHANCEMENTS_PATH', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 

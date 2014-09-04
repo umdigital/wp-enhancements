@@ -15,6 +15,7 @@ class WPEnchancements_Navigation
     // ADD ANCESTOR/CURRENT NAV CLASSES FOR CPT PARENTS
     function nav_menu_classes( $classes, $item )
     {
+        global $wpdb;
         global $post;
 
         $postType = get_post_type_object( $post->post_type );
@@ -27,6 +28,18 @@ class WPEnchancements_Navigation
 
             for( $i = 0; $i < $partsTotal; $i++ ) {
                 if( $postTypeParent = url_to_postid( implode( '/', $parts ) ) ) {
+                    break;
+                }
+                else if( count( $parts ) == 1 ) {
+                    $res = $wpdb->get_row( $wpdb->prepare(
+                        "SELECT id FROM {$wpdb->posts} WHERE post_name = %s",
+                        $parts[0]
+                    ));
+
+                    if( $res->id ) {
+                        $postTypeParent = $res->id;
+                    }
+
                     break;
                 }
 
@@ -60,6 +73,10 @@ class WPEnchancements_Navigation
                     array_push( $classes, 'current_page_ancestor' );
                     array_push( $classes, 'current-page-ancestor' );
                 }
+            }
+            else if( preg_match( '#^https?://'. preg_quote( $_SERVER['HTTP_HOST'], '#' ) . preg_quote( $_SERVER['REQUEST_URI'], '#' ) .'$#i', $item->url ) ) {
+                array_push( $classes, 'current_page_item' );
+                array_push( $classes, 'current-page-item' );
             }
         }
 
@@ -103,18 +120,33 @@ class WPEnchancements_Navigation
     // BU-NAVIGATION CHILD CPT OVERRIDES
     function widget_bu_pages_args( $list_args )
     {
+        global $wpdb;
         global $post;
 
         $postType = get_post_type_object( $post->post_type );
 
+        $slug = $postType ? $postType->rewrite['slug'] : trim( $_SERVER['REQUEST_URI'], '/' );
+
         // FIND PARENT ID
         $postTypeParent = null;
-        if( $postType->rewrite['slug'] ) {
-            $parts      = explode( '/', $postType->rewrite['slug'] );
+        if( $slug ) {
+            $parts      = explode( '/', $slug );
             $partsTotal = count( $parts );
 
             for( $i = 0; $i < $partsTotal; $i++ ) {
                 if( $postTypeParent = url_to_postid( implode( '/', $parts ) ) ) {
+                    break;
+                }
+                else if( count( $parts ) == 1 ) {
+                    $res = $wpdb->get_row( $wpdb->prepare(
+                        "SELECT id FROM {$wpdb->posts} WHERE post_name = %s",
+                        $parts[0]
+                    ));
+
+                    if( $res->id ) {
+                        $postTypeParent = $res->id;
+                    }
+
                     break;
                 }
 

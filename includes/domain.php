@@ -6,16 +6,16 @@ class WPEnchancements_Domain
     static public function init()
     {
         // actions/filters here
-        add_filter( 'wp_get_nav_menu_items', 'WPEnchancements_Domain::menu_items', 10 );
+        add_filter( 'wp_get_nav_menu_items', array( __CLASS__, 'menu_items' ), 10 );
 
-        add_filter( 'theme_mod_header_image', 'WPEnchancements_Domain::string_url_fix' );
-        add_filter( 'the_content', 'WPEnchancements_Domain::string_url_fix' );
+        add_filter( 'theme_mod_header_image', array( __CLASS__, 'string_url_fix' ) );
+        add_filter( 'the_content', array( __CLASS__, 'string_url_fix' ) );
 
-        add_filter( 'post_link', 'WPEnchancements_Domain::string_url_fix', 99 );
+        add_filter( 'post_link', array( __CLASS__, 'string_url_fix' ), 99 );
 
         // admin bar url fixing
-        add_action( 'wp_before_admin_bar_render', 'WPEnchancements_Domain::admin_bar_render_start' );
-        add_action( 'wp_after_admin_bar_render', 'WPEnchancements_Domain::admin_bar_render_end' );
+        add_action( 'wp_before_admin_bar_render', array( __CLASS__, 'admin_bar_render_start' ) );
+        add_action( 'wp_after_admin_bar_render', array( __CLASS__, 'admin_bar_render_end' ) );
     }
 
     static public function string_url_fix( $string )

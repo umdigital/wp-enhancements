@@ -255,7 +255,7 @@ class WP_GitHub_Updater {
 				set_site_transient( $this->config['transient_key'] .'_new_version', $version, 60*60*6 );
 		}
 
-		return $version;
+		return trim( $version );
 	}
 
 

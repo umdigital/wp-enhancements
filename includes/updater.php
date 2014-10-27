@@ -228,7 +228,7 @@ class WP_GitHub_Updater {
 
 			if (is_array($raw_response)) {
 				if (!empty($raw_response['body']))
-					preg_match( '#^\s*Version\:\s*(.*)$#im', $raw_response['body'], $matches );
+					preg_match( '/^[ \t\/*#@]*Version:(.*)$/mi', $raw_response['body'], $matches );
 			}
 
 			if ( empty( $matches[1] ) )
@@ -242,7 +242,7 @@ class WP_GitHub_Updater {
 			if ( is_wp_error( $raw_response ) )
 				return $version;
 
-			preg_match( '#^\s*`*~Current Version\:\s*([^~]*)~#im', $raw_response['body'], $__version );
+			preg_match( '/^[ \t\/*#@]*Current Version:(.*)$/mi', $raw_response['body'], $__version );
 
 			if ( isset( $__version[1] ) ) {
 				$version_readme = $__version[1];

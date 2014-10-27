@@ -4,12 +4,12 @@ class WPEnchancements_Navigation
 {
     static public function init()
     {
-        add_filter( 'nav_menu_css_class', 'WPEnchancements_Navigation::nav_menu_classes', 10, 2 );
-        add_filter( 'bu_navigation_filter_item_attrs', 'WPEnchancements_Navigation::nav_menu_classes', 10, 2 );
+        add_filter( 'nav_menu_css_class', array( __CLASS__, 'nav_menu_classes' ), 10, 2 );
+        add_filter( 'bu_navigation_filter_item_attrs', array( __CLASS__, 'nav_menu_classes' ), 10, 2 );
 
-        add_filter( 'bu_navigation_post_types', 'WPEnchancements_Navigation::bu_navigation_post_types' );
+        add_filter( 'bu_navigation_post_types', array( __CLASS__, 'bu_navigation_post_types' ) );
 
-        add_filter( 'widget_bu_pages_args', 'WPEnchancements_Navigation::widget_bu_pages_args', 9999 );
+        add_filter( 'widget_bu_pages_args', array( __CLASS__, 'widget_bu_pages_args' ), 9999 );
     }
 
     // ADD ANCESTOR/CURRENT NAV CLASSES FOR CPT PARENTS

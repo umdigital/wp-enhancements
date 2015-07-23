@@ -1,5 +1,9 @@
+1.1.2 (2015-07-23)
+==================
+fix how for getting $postType object on archives
+
 1.1.1 (2014-10-27)
-================
+==================
 fixed problem with php 5.2.9 and the way filters/actions were initialized
 
 1.1 (2014-09-04)

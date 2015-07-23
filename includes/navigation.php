@@ -18,7 +18,12 @@ class WPEnchancements_Navigation
         global $wpdb;
         global $post;
 
-        $postType = get_post_type_object( $post->post_type );
+        if( is_archive() ) {
+            $postType = get_queried_object();
+        }
+        else {
+            $postType = get_post_type_object( $post->post_type );
+        }
 
         // FIND PARENT ID
         $postTypeParent = null;

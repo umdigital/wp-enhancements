@@ -13,7 +13,7 @@ class WPEnchancements_Navigation
     }
 
     // ADD ANCESTOR/CURRENT NAV CLASSES FOR CPT PARENTS
-    function nav_menu_classes( $classes, $item )
+    static public function nav_menu_classes( $classes, $item )
     {
         global $wpdb;
         global $post;
@@ -113,17 +113,20 @@ class WPEnchancements_Navigation
     }
 
     // ADD CURRENT PAGE POST TYPE TO BU-NAV supported post types
-    function bu_navigation_post_types( $post_types )
+    static public function bu_navigation_post_types( $post_types )
     {
         global $post;
-        $post_types['post'] = $post->post_type;
+        
+        if( $post ) {
+            $post_types['post'] = $post->post_type;
+        }
 
         return $post_types;
     }
 
 
     // BU-NAVIGATION CHILD CPT OVERRIDES
-    function widget_bu_pages_args( $list_args )
+    static public function widget_bu_pages_args( $list_args )
     {
         global $wpdb;
         global $post;

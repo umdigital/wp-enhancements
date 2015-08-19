@@ -20,8 +20,9 @@ function wpenhancements_github_updater_init()
     if( !class_exists( 'WP_GitHub_Updater' ) ) {
         include_once WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'updater.php';
     }
-    //define( 'WP_GITHUB_FORCE_UPDATE', true );
-
+    if( isset( $_GET['force-check'] ) && $_GET['force-check'] ) {
+            define( 'WP_GITHUB_FORCE_UPDATE', true );
+    }
     if( is_admin() ) {
         new WP_GitHub_Updater(array(
             // this is the slug of your plugin

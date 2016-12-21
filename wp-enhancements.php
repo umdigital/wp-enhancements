@@ -3,7 +3,7 @@
  * Plugin Name: WP Enhancements
  * Plugin URI: https://github.com/umichcreative/WP-Enhancements/
  * Description: A plugin that provides enhancements to Wordpress by adding or fixing functionality.
- * Version: 1.3
+ * Version: 1.3.1
  * Author: U-M: Michigan Creative
  * Author URI: http://creative.umich.edu
  */

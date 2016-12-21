@@ -20,6 +20,11 @@ class WPEnchancements_Domain
 
     static public function string_url_fix( $string )
     {
+        // just return the data if its not a string
+        if( !is_string( $string ) ) {
+            return $string;
+        }
+        
         if( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
             // normalize domain
             $string = str_replace(

@@ -20,15 +20,21 @@ class WPEnchancements_Navigation
 
         if( is_archive() ) {
             $postType = get_queried_object();
+            $parts = explode( '/', $postType->rewrite['slug'] );
+            if( count( $parts ) > 1 ) {
+                array_pop( $parts );
+            }
+            $slug = implode( '/', $parts );
         }
         else {
             $postType = get_post_type_object( $post->post_type );
+            $slug = $postType->rewrite['slug'];
         }
 
         // FIND PARENT ID
         $postTypeParent = null;
-        if( $postType->rewrite['slug'] ) {
-            $parts      = explode( '/', $postType->rewrite['slug'] );
+        if( $slug ) {
+            $parts      = explode( '/', $slug );
             $partsTotal = count( $parts );
 
             for( $i = 0; $i < $partsTotal; $i++ ) {

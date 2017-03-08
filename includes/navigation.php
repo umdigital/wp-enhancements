@@ -32,7 +32,8 @@ class WPEnchancements_Navigation
             $partsTotal = count( $parts );
 
             for( $i = 0; $i < $partsTotal; $i++ ) {
-                if( $postTypeParent = url_to_postid( implode( '/', $parts ) ) ) {
+                if( $pPost = get_page_by_path( implode( '/', $parts ), OBJECT, get_post_types( array( 'public' => true ) ) ) ) {
+                    $postTypeParent = $pPost->ID;
                     break;
                 }
                 else if( count( $parts ) == 1 ) {
@@ -142,7 +143,8 @@ class WPEnchancements_Navigation
             $partsTotal = count( $parts );
 
             for( $i = 0; $i < $partsTotal; $i++ ) {
-                if( $postTypeParent = url_to_postid( implode( '/', $parts ) ) ) {
+                if( $pPost = get_page_by_path( implode( '/', $parts ), OBJECT, get_post_types( array( 'public' => true ) ) ) ) {
+                    $postTypeParent = $pPost->ID;
                     break;
                 }
                 else if( count( $parts ) == 1 ) {

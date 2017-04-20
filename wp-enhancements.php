@@ -3,7 +3,7 @@
  * Plugin Name: WP Enhancements
  * Plugin URI: https://github.com/umichcreative/WP-Enhancements/
  * Description: A plugin that provides enhancements to Wordpress by adding or fixing functionality.
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: U-M: Michigan Creative
  * Author URI: http://creative.umich.edu
  */
@@ -22,7 +22,7 @@ function wpenhancements_github_updater_init()
     if( !class_exists( 'WP_GitHub_Updater' ) ) {
         include_once WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'updater.php';
     }
-    if( isset( $_GET['force-check'] ) && $_GET['force-check'] ) {
+    if( isset( $_GET['force-check'] ) && $_GET['force-check'] && !defined( 'WP_GITHUB_FORCE_UPDATE' ) ) {
             define( 'WP_GITHUB_FORCE_UPDATE', true );
     }
     if( is_admin() ) {

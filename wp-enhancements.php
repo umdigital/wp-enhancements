@@ -3,15 +3,16 @@
  * Plugin Name: WP Enhancements
  * Plugin URI: https://github.com/umichcreative/WP-Enhancements/
  * Description: A plugin that provides enhancements to Wordpress by adding or fixing functionality.
- * Version: 1.3.3
+ * Version: 1.4
  * Author: U-M: Michigan Creative
  * Author URI: http://creative.umich.edu
  */
 
 define( 'WPENHANCEMENTS_PATH', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 
-include WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'navigation.php';
 include WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'domain.php';
+include WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'images.php';
+include WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'navigation.php';
 include WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'themes.php';
 include WPENHANCEMENTS_PATH .'includes'. DIRECTORY_SEPARATOR .'oembed.php';
 

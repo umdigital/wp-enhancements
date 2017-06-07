@@ -85,8 +85,10 @@ class WPEnchancements_Images
             //$slide['full_image_url'] = str_replace( 'mc-image-cache/', '', $slide['full_image_url'] );
             $slide['image_url'] = str_replace( 'mc-image-cache/', '', $slide['image_url'] );
 
-            foreach( $slide['image_thumbnails'] as &$thumb ) {
-                $thumb = str_replace( 'mc-image-cache/', '', $thumb );
+            if( isset( $slide['image_thumbnails'] ) && is_array( $slide['image_thumbnails'] ) ) {
+                foreach( $slide['image_thumbnails'] as &$thumb ) {
+                    $thumb = str_replace( 'mc-image-cache/', '', $thumb );
+                }
             }
         }
         unset( $slide );
@@ -177,7 +179,9 @@ class WPEnchancements_Images
 
         // dump directory if its empty
         if( !glob( $dir . DIRECTORY_SEPARATOR .'*' ) ) {
-            rmdir( $dir );
+            if( is_dir( $dir ) ) {
+                rmdir( $dir );
+            }
         }
     }
 }

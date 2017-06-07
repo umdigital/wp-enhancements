@@ -18,6 +18,10 @@ class WPEnchancements_Navigation
         global $wpdb;
         global $post;
 
+        if( !is_object( $post ) ) {
+            return $classes;
+        }
+
         if( is_archive() ) {
             $postType = get_queried_object();
             $parts = explode( '/', $postType->rewrite['slug'] );

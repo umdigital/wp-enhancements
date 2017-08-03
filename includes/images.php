@@ -28,6 +28,11 @@ class WPEnchancements_Images
     // handle replacing full image src with cached image src
     static public function imageSize( $image, $id, $size )
     {
+        // nothing to do
+        if( !$image ) {
+            return $image;
+        }
+
         // prepare editor/load remote image
         if( $size == 'full' && wp_attachment_is_image( $id ) ) {
             $image[0] = self::_getCacheImage( $image[0] );

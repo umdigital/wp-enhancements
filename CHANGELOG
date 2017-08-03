@@ -1,3 +1,8 @@
+1.5.1 (2017-08-03)
+==================
+Fix image resize bug if empty image string passed.
+- woocommerce default product image issue
+
 1.5 (2017-06-13)
 ================
 Add new SSL fixing enhancement set

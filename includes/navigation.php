@@ -52,7 +52,7 @@ class WPEnchancements_Navigation
                         $parts[0]
                     ));
 
-                    if( $res->id ) {
+                    if( $res && $res->id ) {
                         $postTypeParent = $res->id;
                     }
 
@@ -163,7 +163,7 @@ class WPEnchancements_Navigation
                         $parts[0]
                     ));
 
-                    if( $res->id ) {
+                    if( $res && $res->id ) {
                         $postTypeParent = $res->id;
                     }
 

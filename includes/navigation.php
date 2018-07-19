@@ -10,6 +10,16 @@ class WPEnchancements_Navigation
         add_filter( 'bu_navigation_post_types', array( __CLASS__, 'bu_navigation_post_types' ) );
 
         add_filter( 'widget_bu_pages_args', array( __CLASS__, 'widget_bu_pages_args' ), 9999 );
+
+        // Add media manager to admin bar site menu
+        add_action( 'admin_bar_menu', function( $wpAdminBar ){
+            $wpAdminBar->add_node(array(
+                'id' => 'wp-media-manager',
+                'title' => 'Media',
+                'href'  => admin_url( 'upload.php' ),
+                'parent' => 'site-name'
+            ));
+        }, 999);
     }
 
     // ADD ANCESTOR/CURRENT NAV CLASSES FOR CPT PARENTS

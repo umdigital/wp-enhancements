@@ -3,7 +3,7 @@
 /* IMAGE OPTIMIZATIONS */
 class WPEnchancements_Images
 {
-    static private $_cacheAutoPurge = 30; // 30 days
+    static private $_cacheAutoPurge = 7; // 7 days
 
     static public function init()
     {

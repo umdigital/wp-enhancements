@@ -1,3 +1,7 @@
+1.5.5 (2019-06-27)
+==================
+Add sanity check for when mc-image-cache requests 404.
+
 1.5.4 (2018-10-25)
 ==================
 Reduce cached images from 30 to 7 days

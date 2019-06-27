@@ -22,6 +22,32 @@ class WPEnchancements_Images
         add_filter( 'cycloneslider_image_path', array( __CLASS__, 'cycloneImagePath' ) );
         add_filter( 'cycloneslider_view_vars', array( __CLASS__, 'cycloneViewVars' ) );
 
+        // rebuild image cache if it 404's
+        add_action( 'template_redirect', function(){
+            if( is_404() ) {
+                $wpUpload = wp_get_upload_dir();
+                $url = 'http'. (@$_SERVER['HTTPS'] ? 's' : null) .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+                if( strpos( $url, $wpUpload['baseurl'] ) !== false ) {
+                    $uploadPath = parse_url( $wpUpload['baseurl'], PHP_URL_PATH );
+
+                    $sourceFile = preg_replace(
+                        '/^'. preg_quote( $uploadPath, '/' ) .'/',
+                        '',
+                        parse_url( $url, PHP_URL_PATH )
+                    );
+                    $source = str_replace( '/mc-image-cache/', '/', $wpUpload['basedir'] . $sourceFile );
+
+                    if( file_exists( $source ) ) {
+                        wp_redirect(
+                            self::_getCacheImage( str_replace( '/mc-image-cache/', '/', $url ) )
+                        );
+                        exit;
+                    }
+                }
+            }
+        });
+
         self::_cleanup();
     }
 

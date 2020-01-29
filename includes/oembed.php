@@ -41,6 +41,17 @@ class WPEnhancements_Oembed
                 return $html;
             }, 10, 4 );
         }
+
+        // don't show related videos at the end
+        add_filter( 'oembed_dataparse', function( $return, $data, $url ){
+            if( $data->provider_name == 'YouTube' ) {
+                $data->html = str_replace( 'feature=oembed', 'feature=oembed&#038;rel=0', $data->html );
+
+                return $data->html;
+            }
+
+            return $return;
+        }, 10, 3 );
     }
 
     static public function enqueue()

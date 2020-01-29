@@ -1,11 +1,51 @@
 <?php
 
-class WPEnchancements_Oembed
+class WPEnhancements_Oembed
 {
+    static private $_options = array(
+        'fluid' => '0'
+    );
+
     static public function init()
     {
         add_filter( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );
         add_filter( 'embed_oembed_html', array( __CLASS__, 'oembedResult' ), 10, 4 );
+
+        add_action( 'um_wpe_admin', function(){
+            include WPENHANCEMENTS_PATH .'templates'. DIRECTORY_SEPARATOR .'admin_oembed.tpl';
+        });
+
+        $options = array_replace_recursive(
+            array(
+                'oembed' => self::$_options
+            ),
+            get_option( 'um_wpe_options' ) ?: array()
+        );
+
+        self::$_options = $options['oembed'];
+
+        if( self::$_options['fluid'] ) {
+            // the wp enhancements plugin will take over actually resizing the iframe in the correct aspect ratio
+            add_filter( 'embed_oembed_html', function( $html, $url, $attr, $post_ID ){
+                if( self::checkSourceUrl( $url ) ) {
+                    // append class if class attr exists
+                    if( preg_match( '#<iframe .*?(class="(.+?)")#', $html, $cMatch ) ) {
+                        $html = str_replace( $cMatch[1], 'class="'. $cMatch[2] .' fluid"', $html );
+                    }
+                    // add class attr to iframe
+                    else {
+                        $html = str_replace( 'iframe ', 'iframe class="fluid" ', $html );
+                    }
+                }
+
+                return $html;
+            }, 10, 4 );
+
+
+            add_filter( 'oembed_result', function( $html, $url, $args ){
+                return apply_filters( 'embed_oembed_html', $html, $url, null, null );
+            }, 10, 3);
+        }
     }
 
     static public function enqueue()
@@ -91,4 +131,4 @@ class WPEnchancements_Oembed
         }
     }
 }
-WPEnchancements_Oembed::init();
+WPEnhancements_Oembed::init();

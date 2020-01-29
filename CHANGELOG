@@ -1,3 +1,7 @@
+1.6.0 (2020-01-29)
+==================
+Add option for fluid video embeds.
+
 1.5.5 (2019-06-27)
 ==================
 Add sanity check for when mc-image-cache requests 404.

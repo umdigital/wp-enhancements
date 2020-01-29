@@ -1,6 +1,6 @@
 <?php
 
-class WPEnchancements_Themes
+class WPEnhancements_Themes
 {
     static public function init()
     {
@@ -27,4 +27,4 @@ class WPEnchancements_Themes
     }
 }
 
-WPEnchancements_Themes::init();
+WPEnhancements_Themes::init();

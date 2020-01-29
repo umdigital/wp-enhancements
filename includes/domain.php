@@ -1,7 +1,7 @@
 <?php
 
 /* WPMU Domain Mapping Tweaks */
-class WPEnchancements_Domain
+class WPEnhancements_Domain
 {
     static public function init()
     {
@@ -74,4 +74,4 @@ class WPEnchancements_Domain
         }
     }
 }
-WPEnchancements_Domain::init();
+WPEnhancements_Domain::init();

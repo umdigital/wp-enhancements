@@ -1,6 +1,6 @@
 <?php
 
-class WPEnchancements_Navigation
+class WPEnhancements_Navigation
 {
     static public function init()
     {
@@ -195,4 +195,4 @@ class WPEnchancements_Navigation
         return $list_args;
     }
 }
-WPEnchancements_Navigation::init();
+WPEnhancements_Navigation::init();

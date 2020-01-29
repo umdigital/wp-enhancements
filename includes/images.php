@@ -1,7 +1,7 @@
 <?php
 
 /* IMAGE OPTIMIZATIONS */
-class WPEnchancements_Images
+class WPEnhancements_Images
 {
     static private $_cacheAutoPurge = 7; // 7 days
 
@@ -217,4 +217,4 @@ class WPEnchancements_Images
     }
 }
 
-WPEnchancements_Images::init();
+WPEnhancements_Images::init();

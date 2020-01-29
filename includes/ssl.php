@@ -1,7 +1,7 @@
 <?php
 
 /* SSL FIXES */
-class WPEnchancements_SSL
+class WPEnhancements_SSL
 {
     static public function init()
     {
@@ -18,4 +18,4 @@ class WPEnchancements_SSL
         return $url;
     }
 }
-WPEnchancements_SSL::init();
+WPEnhancements_SSL::init();

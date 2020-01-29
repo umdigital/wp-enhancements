@@ -40,11 +40,6 @@ class WPEnhancements_Oembed
 
                 return $html;
             }, 10, 4 );
-
-
-            add_filter( 'oembed_result', function( $html, $url, $args ){
-                return apply_filters( 'embed_oembed_html', $html, $url, null, null );
-            }, 10, 3);
         }
     }
 

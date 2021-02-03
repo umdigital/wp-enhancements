@@ -1,6 +1,6 @@
 (function($){
     $(document).ready(function(){
-        var videos = $("iframe[src*='//www.youtube.com'].fluid");
+        var videos = $("iframe[src*='//www.youtube.com'].fluid, iframe[src*='//player.vimeo.com'].fluid");
 
         videos.each(function(){
             $(this).data( 'aspectRatio', (this.height / this.width) )

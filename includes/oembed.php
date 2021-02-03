@@ -127,7 +127,8 @@ class WPEnhancements_Oembed
     {
         $sources = array(
             '#https?://((m|www)\.)?youtube\.com/(watch|playlist).*#i' => 'youtube',
-            '#https?://youtu\.be/.*#i'                                => 'youtube'
+            '#https?://youtu\.be/.*#i'                                => 'youtube',
+            '#https?://(.+\.)?vimeo\.com/.*#i'                        => 'vimeo',
         );
 
         foreach( $sources as $regex => $source ) {

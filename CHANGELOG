@@ -1,3 +1,7 @@
+1.6.3 (2021-02-03)
+==================
+add support for fluid vimeo embeds
+
 1.6.2 (2020-01-29)
 ==================
 add 'rel=0' to youtube embeds

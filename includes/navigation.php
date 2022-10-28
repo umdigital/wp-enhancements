@@ -152,6 +152,10 @@ class WPEnhancements_Navigation
         global $wpdb;
         global $post;
 
+        if( !is_array( $list_args ) ) {
+            $list_args = $list_args ? (array) $list_args : array();
+        }
+
         $postType = get_post_type_object( $post->post_type );
 
         $slug = $postType ? $postType->rewrite['slug'] : trim( $_SERVER['REQUEST_URI'], '/' );

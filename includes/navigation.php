@@ -42,7 +42,7 @@ class WPEnhancements_Navigation
         }
         else {
             $postType = get_post_type_object( $post->post_type );
-            $slug = $postType->rewrite['slug'];
+            $slug = $postType->rewrite ? $postType->rewrite['slug'] : '';
         }
 
         // FIND PARENT ID
@@ -158,7 +158,7 @@ class WPEnhancements_Navigation
 
         $postType = get_post_type_object( $post->post_type );
 
-        $slug = $postType ? $postType->rewrite['slug'] : trim( $_SERVER['REQUEST_URI'], '/' );
+        $slug = $postType && $postType->rewrite ? $postType->rewrite['slug'] : trim( $_SERVER['REQUEST_URI'], '/' );
 
         // FIND PARENT ID
         $postTypeParent = null;

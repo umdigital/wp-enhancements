@@ -34,7 +34,7 @@ class WPEnhancements_Navigation
 
         if( is_archive() ) {
             $postType = get_queried_object();
-            $parts = explode( '/', @$postType->rewrite['slug'] );
+            $parts = explode( '/', @isset( $postType->rewrite['slug'] ) ? $postType->rewrite['slug'] : '' );
             if( count( $parts ) > 1 ) {
                 array_pop( $parts );
             }

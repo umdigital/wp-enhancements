@@ -114,7 +114,7 @@ class WPEnhancements_Images
     {
         foreach( $vars['slides'] as &$slide ) {
             //$slide['full_image_url'] = str_replace( 'mc-image-cache/', '', $slide['full_image_url'] );
-            $slide['image_url'] = str_replace( 'mc-image-cache/', '', $slide['image_url'] );
+            @$slide['image_url'] = str_replace( 'mc-image-cache/', '', $slide['image_url'] );
 
             if( isset( $slide['image_thumbnails'] ) && is_array( $slide['image_thumbnails'] ) ) {
                 foreach( $slide['image_thumbnails'] as &$thumb ) {
